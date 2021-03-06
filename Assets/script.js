@@ -10,22 +10,22 @@ function generatePassword(characters, upperConfirm, lowerConfirm, numbersConfirm
   availChars = [];
 
   // add uppercase letters to array of available characters if the user confirms
-  if (upperConfirm = true) {
+  if (upperConfirm === true) {
     availChars = availChars.concat(uppercase);
   }
 
   // add lowercase letters to array of available characters if the user confirms
-  if (lowerConfirm = true) {
+  if (lowerConfirm === true) {
     availChars = availChars.concat(lowercase);
   }
 
   // add numbers to array of available characters if the user confirms
-  if (numbersConfirm = true) {
+  if (numbersConfirm === true) {
     availChars = availChars.concat(numbers);
   }
 
   // add symbols to array of available characters if the user confirms
-  if (specialConfirm = true) {
+  if (specialConfirm === true) {
     availChars = availChars.concat(special);
   }
 
