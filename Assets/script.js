@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 // create arrays of each type of character
 const uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-const special = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "]", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
+const special = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "]", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 function generatePassword(characters, upperConfirm, lowerConfirm, numbersConfirm, specialConfirm) {
@@ -51,10 +51,20 @@ function writePassword() {
   while (characters < 8 || characters > 125) {
     characters = prompt("Please enter a password length between 8 and 125");
   }
+
   var upperConfirm = confirm("Include uppercase letters?");
   var lowerConfirm = confirm("Include lowercase letters?");
   var numbersConfirm = confirm("Include numbers?");
   var specialConfirm = confirm("Include special characters?");
+
+  // if user does not select any character types to include, tell them to select at least one and go back through prompts
+  while (upperConfirm === false && lowerConfirm === false && numbersConfirm === false && specialConfirm === false) {
+    alert("Please select at least 1 character type to include")
+    upperConfirm = confirm("Include uppercase letters?");
+    lowerConfirm = confirm("Include lowercase letters?");
+    numbersConfirm = confirm("Include numbers?");
+    specialConfirm = confirm("Include special characters?");
+  }
 
   var password = generatePassword(characters, upperConfirm, lowerConfirm, numbersConfirm, specialConfirm);
   var passwordText = document.querySelector("#password");
